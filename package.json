@@ -1,7 +1,7 @@
 {
   "name": "dsh-openclaw-bridge",
   "version": "0.1.0",
-  "description": "Bridge DeepSeek Harness and OpenClaw both ways; ships a local OpenAI-compatible engine so OpenClaw can use DSH as its model and tools.",
+  "description": "One integrated DSH plugin bridging DeepSeek Harness and OpenClaw: an OpenAI-compatible engine so OpenClaw can use DSH as its model and tools, OpenClaw bridge tools + skill import, and DSH workspace/session management.",
   "license": "MIT",
   "main": "src/dsh-openclaw-engine.js",
   "files": [

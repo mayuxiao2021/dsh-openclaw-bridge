@@ -10,8 +10,13 @@ Bridge DeepSeek Harness (DSH) and OpenClaw in both directions:
    request runs a **one-shot DSH child agent with the full DSH toolset** and streams the final text
    back. Point OpenClaw's `models.providers` at it and OpenClaw uses DSH as its model **and** tools —
    no OpenAI key required.
-3. **Workspace & session management** (`src/dsh-workspace-manager.js`, loaded separately): model
-   tools to list/create/rename/delete DSH workspaces and list/rename/archive DSH sessions.
+3. **Workspace & session management (integrated in the same single plugin)**: model tools
+   `dsh_workspace_list/create/rename/delete/current` and
+   `dsh_session_list/rename/archive` so the agent and the OpenClaw engine can administer this
+   harness's workspaces and sessions.
+
+Everything is **one plugin** (`src/dsh-openclaw-engine.js`): load it once and you get the bridge
+tools, the OpenAI-compatible engine, the skill importer, and workspace/session management together.
 
 Verified end-to-end on Windows with `openclaw 2026.7.1-2` + `@tencent-weixin/openclaw-weixin 2.4.8`:
 WeChat inbound → OpenClaw main agent (`dsh/dsh-agent`) → `POST http://127.0.0.1:3080/dsh-engine/v1/chat/completions`
