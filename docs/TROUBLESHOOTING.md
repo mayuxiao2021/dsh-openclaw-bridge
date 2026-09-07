@@ -111,3 +111,21 @@ Symptom: `openclaw gateway run` exits with
 `Gateway start blocked: existing config is missing gateway.mode`.
 
 Fix: `openclaw config set gateway.mode local` (or re-run onboard/setup) before starting.
+
+## 10. A failed apply can leave zombie routes that outlive stop
+
+Symptom: updating an integrated plugin fails with
+`webserver: duplicate exact route "..."` even after `cordis_stop`, and no version of the plugin can
+register that path again.
+
+Cause: `apply()` registers web routes **before** registering tools. If a later step throws (e.g. a
+tool-name conflict with another plugin), the already-registered routes are not rolled back, so they
+survive `cordis_stop` and only disappear at the next DSH process restart. Order-dependent partial
+registration is the trap.
+
+Fix:
+- when swapping engine versions live, keep the route prefix unique per deployment step (e.g.
+  `/dsh-engine/v1` then `/dsh-engine/v2`) and switch the OpenClaw provider `baseUrl` accordingly,
+- after the next DSH restart the zombie path is gone and the canonical prefix can be reused,
+- long-term, mount the plugin in a composition so apply-time conflicts surface at boot instead of
+  mid-session.
