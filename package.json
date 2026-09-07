@@ -1,0 +1,30 @@
+{
+  "name": "dsh-openclaw-bridge",
+  "version": "0.1.0",
+  "description": "Bridge DeepSeek Harness and OpenClaw both ways; ships a local OpenAI-compatible engine so OpenClaw can use DSH as its model and tools.",
+  "license": "MIT",
+  "main": "src/dsh-openclaw-engine.js",
+  "files": [
+    "src",
+    "examples",
+    "docs",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "dsh",
+    "openclaw",
+    "clawdbot",
+    "deepseek",
+    "cordis",
+    "openai-compatible",
+    "wechat",
+    "weixin"
+  ]
+}

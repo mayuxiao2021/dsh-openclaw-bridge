@@ -1,0 +1,17 @@
+{
+  "models": {
+    "providers": {
+      "dsh": {
+        "api": "openai-completions",
+        "baseUrl": "http://127.0.0.1:3080/dsh-engine/v1",
+        "apiKey": "dsh-oc-engine",
+        "models": [
+          {
+            "id": "dsh-agent",
+            "name": "DSH Agent Engine"
+          }
+        ]
+      }
+    }
+  }
+}
