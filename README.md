@@ -31,6 +31,10 @@ examples/curl.pwsh.ps1                 smoke-test requests for /models and /chat
 docs/ARCHITECTURE.md                   data flow, route contract, config reference
 docs/LOADING.md                        how to run it inside DSH today (dynamic plugin) and notes for mounting in a preset
 docs/TROUBLESHOOTING.md                every integration bug this repo hit and its fix
+docs/OPERATIONS.md                     24/7 hosting runbook: power settings, autostart tasks, recovery after DSH restart
+scripts/ensure-dsh-web.ps1             logon guard that starts `dsh web` if the dashboard is down
+scripts/ensure-power.ps1               disables sleep/hibernate (AC+DC) on all power schemes
+scripts/setup-autostart.ps1            registers the DSH-Harness + OpenClaw Gateway scheduled tasks
 LICENSE  MIT
 ```
 
